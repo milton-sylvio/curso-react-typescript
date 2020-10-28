@@ -18,7 +18,7 @@ export default createGlobalStyle `
   button,
   input {
     border: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: Montserrat, sans-serif;
     outline: 0;
   }
 

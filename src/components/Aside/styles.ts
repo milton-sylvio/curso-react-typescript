@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${ props => props.theme.colors.secondary };
-  border-right: 1px solid ${ props => props.theme.colors.gray };
+  border-right: 1px solid ${ props => props.theme.colors.grey };
   grid-area: AS;
   padding-left: 20px;
 `;
@@ -26,13 +26,20 @@ export const MenuContainer = styled.nav`
   margin-top: 50px;
 `; 
 export const MenuItem = styled.a`
+  align-items: center;
   color: ${ props => props.theme.colors.info };
+  display: flex;
   margin-bottom: 15px;
   text-decoration: none;
   transition: opacity .3s;
   
   &:hover {
     opacity: .7;
+  }
+
+  > svg {
+    font-size: 18px;
+    margin-right: 5px;
   }
 `;
 

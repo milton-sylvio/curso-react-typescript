@@ -21,6 +21,9 @@
     "jsx": "react",
     "noImplicitAny": false
   },
+  "files": [
+    "src/styles/themes/styled.d.ts"
+  ],
   "include": [
     "src"
   ]

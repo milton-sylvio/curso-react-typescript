@@ -8,13 +8,13 @@ export const Container = styled.div`
 export const ToggleLabel = styled.span`
   color: ${ props => props.theme.colors.white };
 `;
-
-export const ToggleSwitch = styled(Switch).attrs<ReactSwitchProps>(
-  ({ theme }) => ({
-    onColor: theme.colors.info,
-    offColor: theme.colors.warning,
-    height: 20
-  })
-  )<ReactSwitchProps>`
-    margin: 0 7px;
-`;
+export const ToggleSwitch =  styled.section``
+// export const ToggleSwitch = styled(Switch).attrs<ReactSwitchProps>(
+//   ({ theme }) => ({
+//     onColor: theme.colors.info,
+//     offColor: theme.colors.warning,
+//     height: 20
+//   })
+//   )<ReactSwitchProps>`
+//     margin: 0 10px;
+// `;

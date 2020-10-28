@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Container, Profile, Welcome, UserName, Emojis } from './styles';
-import Toggle from '../Toggle';
+import Switch from '../Switch';
 import emojiList from '../../utils/emojis';
  
 const MainHeader: React.FC = () => {
@@ -9,9 +9,18 @@ const MainHeader: React.FC = () => {
     return emojiList[index]
   }, []);
 
+  const [value, setValue] = useState(() => { 
+    return false
+  });
+  // const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false);
+
   return (
     <Container>
-      <Toggle />
+      <Switch
+        checked={value}
+        onColor="#EF476F"
+        handleToggle={() => setValue(!value)} 
+      />
 
       <Profile>
         <Emojis>{emoji}</Emojis>
