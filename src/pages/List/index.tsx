@@ -4,7 +4,27 @@ import HistoryFinances from '../../components/HistoryFinances';
 import Dropdown from '../../components/Dropdown';
 import { Container, Content, Filters } from './styles';
 
-const List: React.FC = () => {
+interface IRouteParams {
+  match: {
+    params: {
+      type: string;
+    }
+  }
+}
+
+const List: React.FC<IRouteParams> = ({ match }) => {
+  const { type } = match.params;
+  
+  const changes = useMemo(() => {
+    return type === 'entry' ? {
+      title: 'Entradas',
+      color: '#F7931B'
+    } : {
+      title: 'Saídas',
+      color: '#E44C4E'
+    };
+  }, [type]);
+
   const months = [
     {value: 7, label: 'Julho'},
     {value: 8, label: 'Agosto'},
@@ -18,7 +38,7 @@ const List: React.FC = () => {
 
   return (
     <Container>
-      <ContentHeader title="Entradas" lineColor="blue">
+      <ContentHeader title={changes.title} lineColor={changes.color}>
         <Dropdown options={months} />
         <Dropdown options={years} />
       </ContentHeader>
