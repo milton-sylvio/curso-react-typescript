@@ -2,5 +2,47 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
 `;
-export const Content = styled.div`
+
+export const Content = styled.section`
+`;
+
+export const Filters = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+
+  .tag-filter {
+    font-size: 16px;
+    font-weight: 700;
+    background: none;
+    color: ${ props => props.theme.colors.white };
+    margin: 0 10px;
+    transition: all .3s;
+    
+    &:after {
+      content: '';
+      display: block;
+      background-color: ${ props => props.theme.colors.white };
+      height: 5px;
+      width: 55px;
+      transition: width .3s;
+    }
+
+    &.tag-filter-success:after {
+      background-color: ${ props => props.theme.colors.success };
+    }
+
+    &.tag-filter-warning:after {
+      background-color: ${ props => props.theme.colors.warning };
+    }
+
+    &:hover {
+      opacity: .7;
+
+      &:after {
+        width: 100%;
+      }
+    }
+  }
 `;

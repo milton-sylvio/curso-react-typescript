@@ -4,7 +4,7 @@ interface IContainerProps {
   borderColor: string;
 }
 
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.li<IContainerProps>`
   align-items: center;
   background-color:  ${ props => props.theme.colors.tertiary };
   border-left: 8px solid ${ props => props.borderColor };
@@ -13,6 +13,7 @@ export const Container = styled.div<IContainerProps>`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  list-style: none;
   margin-bottom: 10px;
   padding: 10px 15px;
   transition: all 0.3s;
