@@ -1,10 +1,14 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle `
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  body {
+    color: ${ props => props.theme.colors.white }
   }
   
   html,

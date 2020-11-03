@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Container, Profile, Welcome, UserName, Emojis } from './styles';
-import Switch from '../Switch';
+import ToggleSwitch from '../ToggleSwitch';
 import emojiList from '../../utils/emojis';
  
 const MainHeader: React.FC = () => {
@@ -16,7 +16,7 @@ const MainHeader: React.FC = () => {
 
   return (
     <Container>
-      <Switch
+      <ToggleSwitch
         checked={value}
         onColor="#EF476F"
         handleToggle={() => setValue(!value)} 

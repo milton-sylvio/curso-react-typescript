@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
-`;
+export const Container = styled.main``;
 
-export const Content = styled.section`
+export const Content = styled.ul`
+  list-style: none;
 `;
 
 export const Filters = styled.div`
@@ -18,6 +18,7 @@ export const Filters = styled.div`
     background: none;
     color: ${ props => props.theme.colors.white };
     margin: 0 10px;
+    opacity: .7;
     transition: all .3s;
     
     &:after {
@@ -38,7 +39,15 @@ export const Filters = styled.div`
     }
 
     &:hover {
-      opacity: .7;
+      opacity: .5;
+
+      &:after {
+        width: 100%;
+      }
+    }
+
+    &.tag-filter-active {
+      opacity: 1;
 
       &:after {
         width: 100%;

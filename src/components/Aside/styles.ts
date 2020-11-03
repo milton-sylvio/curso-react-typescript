@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { lighten, darken, rgba } from 'polished';
 
 export const Container = styled.div`
   background-color: ${ props => props.theme.colors.secondary };
-  border-right: 1px solid ${ props => props.theme.colors.grey };
+  border-right: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) };
   grid-area: AS;
-  padding-left: 20px;
 `;
 
 export const Header = styled.header`
   align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) };
   display: flex;
   height: 70px;
 `; 
@@ -23,23 +25,30 @@ export const Logo = styled.img`
 export const MenuContainer = styled.nav`
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 40px;
+  padding-left: 20px;
 `; 
+
 export const MenuItem = styled.a`
   align-items: center;
-  color: ${ props => props.theme.colors.info };
+  border-radius: 4px;
+  color: ${ props => props.theme.colors.white };
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  padding: 10px 12px;
   text-decoration: none;
-  transition: opacity .3s;
+  transition: all .3s;
+  width: 90%;
   
   &:hover {
-    opacity: .7;
+    background-color: ${ props => darken(0.05, props.theme.colors.secondary) };
+    color: ${ props => rgba(props.theme.colors.white, 0.7) };
+    padding-left: 20px;
   }
 
   > svg {
     font-size: 18px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
 `;
 
