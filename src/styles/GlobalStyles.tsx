@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle `
   * {
@@ -8,7 +8,8 @@ export default createGlobalStyle `
   }
 
   body {
-    color: ${ props => props.theme.colors.white }
+    color: ${ props => props.theme.colors.white };
+    font-size: 16px;
   }
   
   html,
@@ -22,7 +23,7 @@ export default createGlobalStyle `
   button,
   input {
     border: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     outline: 0;
   }
 

@@ -7,7 +7,7 @@ import arrowUpIcon from '../../assets/arrow-up.svg';
 
 import { Container } from './styles';
 
-interface ICardsProps {
+interface IColorCardProps {
   title: string;
   amount: number;
   description: string;
@@ -15,7 +15,7 @@ interface ICardsProps {
   color: string;
 }
 
-const Cards: React.FC<ICardsProps> = ({
+const ColorCard: React.FC<IColorCardProps> = ({
   title,
   amount,
   description,
@@ -51,4 +51,4 @@ const Cards: React.FC<ICardsProps> = ({
   );
 }
 
-export default Cards;
+export default ColorCard;

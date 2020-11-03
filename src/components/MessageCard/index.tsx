@@ -1,21 +1,31 @@
 import React from 'react';
 
-import happyIcon from '../../assets/happy.svg';
-
 import { Container } from './styles';
 
-const MessageCard: React.FC = () => {
+interface IMessageCard {
+  title: string;
+  description: string;
+  footerTxt: string;
+  icon: string;
+}
+
+const MessageCard: React.FC<IMessageCard> = ({
+  title,
+  description,
+  footerTxt,
+  icon,
+}) => {
   return (
     <Container>
       <header>
         <h2>
-          Muito bem! 
-          <img src={happyIcon} alt=""/>
+          { title } 
+          <img src={ icon } alt=""/>
         </h2>
-        <h3>Sua carteira está positiva!</h3>
+        <h3>{ description }</h3>
       </header>
       <footer>
-        <small>Continue assim. Considere investir o seu saldo.</small>
+        <small>{ footerTxt }</small>
       </footer>
     </Container>
   );

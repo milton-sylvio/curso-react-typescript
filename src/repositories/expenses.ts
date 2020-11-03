@@ -68,7 +68,14 @@ const expenses = [
   {"description":"Plano de Saúde",        "amount":"350.00","type":"saída","frequency":"recorrente","date":"2020-10-23"},
   {"description":"Compras do mês",        "amount":"702.00","type":"saída","frequency":"recorrente","date":"2020-10-25"},
   {"description":"Cafeteira",             "amount":"253.00","type":"saída","frequency":"eventual",  "date":"2020-10-26"},
-  {"description":"Pizza",                 "amount":"90.00", "type":"saída","frequency":"eventual",  "date":"2020-10-19"}
+  {"description":"Pizza",                 "amount":"90.00", "type":"saída","frequency":"eventual",  "date":"2020-10-19"},
+  {"description":"Energia elétrica",      "amount":"240.00","type":"saída","frequency":"recorrente","date":"2020-11-11"},
+  {"description":"Água",                  "amount":"95.30", "type":"saída","frequency":"recorrente","date":"2020-11-16"},
+  {"description":"Telefone",              "amount":"92.90", "type":"saída","frequency":"recorrente","date":"2020-11-25"},
+  {"description":"Plano de Saúde",        "amount":"330.00","type":"saída","frequency":"recorrente","date":"2020-11-24"},
+  {"description":"Compras do mês",        "amount":"998.00","type":"saída","frequency":"recorrente","date":"2020-11-26"},
+  {"description":"Cafeteira",             "amount":"253.00","type":"saída","frequency":"eventual",  "date":"2020-11-22"},
+  {"description":"Pizza",                 "amount":"92.00", "type":"saída","frequency":"eventual",  "date":"2020-11-12"}
 ];
 
 export default expenses;

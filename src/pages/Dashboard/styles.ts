@@ -9,6 +9,7 @@ export const Container = styled.main`
 export const Content = styled.section`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export const ContainerCards = styled.div`

@@ -52,6 +52,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Check in https://styled-components.com/
 
+## Paleta de Cores
+
+Check in https://mycolor.space/?hex=%23E44C4E&sub=1
+
 ## React Icons
 
 Check in (https://react-icons.github.io/
@@ -63,3 +67,7 @@ Check in https://github.com/markusenglund/react-switch
 ## React Route Dom (react-router-dom)
 
 Check in https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom
+
+## React Count Up
+
+Check in https://www.npmjs.com/package/react-countup

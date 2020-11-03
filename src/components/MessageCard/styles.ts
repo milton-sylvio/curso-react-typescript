@@ -6,18 +6,27 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   height: 260px;
+  justify-content: space-between;
   padding: 30px;
+  margin: 25px 0;
   position: relative;
   width: 48%;
 
-  h2,
-  h3 {
+  h2 {
     font-size: 28px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: normal;
   }
 
   img {
-    height: 35px;
     width: 35px;
     margin-left: 15px;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 30px;
   }
 `;
