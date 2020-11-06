@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   align-items: flex-stretch;
   flex-direction: column;

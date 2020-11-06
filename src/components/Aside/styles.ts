@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten, darken, rgba } from 'polished';
 
-export const Container = styled.div`
+export const Container = styled.aside`
   background-color: ${ props => props.theme.colors.secondary };
   border-right: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) };
   grid-area: AS;
@@ -44,6 +44,10 @@ export const MenuItem = styled.a`
     background-color: ${ props => darken(0.05, props.theme.colors.secondary) };
     color: ${ props => rgba(props.theme.colors.white, 0.7) };
     padding-left: 20px;
+  }
+
+  &.actived {
+    color: ${ props => darken(0.05, props.theme.colors.warning) };
   }
 
   > svg {

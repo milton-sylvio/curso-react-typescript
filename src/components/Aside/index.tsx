@@ -5,6 +5,9 @@ import {
   MdArrowUpward,
   MdExitToApp
 } from 'react-icons/md';
+
+import logoImg from '../../assets/logo.svg';
+
 import { 
   Container, 
   Header, 
@@ -13,9 +16,32 @@ import {
   MenuContainer, 
   MenuItem 
 } from './styles';
-import logoImg from '../../assets/logo.svg';
 
 const Aside: React.FC = () => {
+  const menu = [
+    {
+      path: '/dashboard',
+      text: 'Dashboard',
+      icon: <MdDashboard />,
+    }, 
+    {
+      path: '/list/entry',
+      text: 'Entradas',
+      icon: <MdArrowUpward />,
+    }, 
+    {
+      path: '/list/outputs',
+      text: 'Saídas',
+      icon: <MdArrowDownward />,
+    },
+    {
+      path: '#',
+      text: 'Sair',
+      icon: <MdExitToApp />,
+    },
+  ];
+
+
   return (
     <Container>
       <Header>
@@ -24,22 +50,22 @@ const Aside: React.FC = () => {
       </Header>
 
       <MenuContainer>
-        <MenuItem href="/dashboard" title="Dashboard">
-          <MdDashboard />
-          Dashboard
-        </MenuItem>
-        <MenuItem href="/list/entry" title="Entradas">
-          <MdArrowUpward />
-          Entradas
-        </MenuItem>
-        <MenuItem href="/list/outputs" title="Saídas">
-          <MdArrowDownward />
-          Saídas
-        </MenuItem>
-        <MenuItem href="#" title="Sair">
-          <MdExitToApp />
-          Sair
-        </MenuItem>
+        {
+          menu.map(item => (
+            <MenuItem 
+              key={item.path}
+              href={item.path} 
+              className={
+                window.location.pathname === item.path
+                ? 'actived'
+                : ''
+              }
+              title={item.text}>
+              { item.icon }
+              {item.text}
+            </MenuItem>
+          ))
+        }
       </MenuContainer>
     </Container>
   );

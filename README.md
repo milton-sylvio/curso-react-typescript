@@ -48,6 +48,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+Repositório do curso [React e TypeScript: desenvolvendo um Dashboard](https://github.com/rodrigorgtic/minha-carteira-dashboard)
+
 ## Styled Components
 
 Check in https://styled-components.com/

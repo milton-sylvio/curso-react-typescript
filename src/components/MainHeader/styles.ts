@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
-export const Container = styled.section`
+export const Container = styled.header`
   align-items: center;
   background-color: ${ props => props.theme.colors.secondary };
   border-bottom: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) };

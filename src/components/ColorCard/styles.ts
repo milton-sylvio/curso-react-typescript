@@ -18,7 +18,7 @@ export const Container = styled.div<IContainerProps>`
   width: 33%;
   
   &:nth-child(2) {
-    margin: 0 50px;
+    margin: 0 30px;
   }
 
   > span {
