@@ -46,7 +46,7 @@ const Aside: React.FC = () => {
     <Container>
       <Header>
         <Logo src={logoImg} alt="Logo Minha Carteira" />
-        <Title>Minha Carteira</Title>
+        <Title>Minha <strong>Carteira</strong></Title>
       </Header>
 
       <MenuContainer>

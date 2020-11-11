@@ -31,7 +31,7 @@ const ColorCard: React.FC<IColorCardProps> = ({
   const getIcon = iconFormated[icon];
 
   return (
-    <Container color={color}>
+    <Container className={color}>
       <span>{ title }</span>
 
       <strong>

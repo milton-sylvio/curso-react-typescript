@@ -32,10 +32,10 @@ export const LegendItem = styled.li`
     width: 12px;
   }
 
-  &.info:before  {
+  &.entry:before  {
     background-color: ${ props => props.theme.colors.info };
   }
-  &.warning:before  {
-    background-color: ${ props => props.theme.colors.warning };
+  &.output:before  {
+    background-color: ${ props => props.theme.colors.success };
   }
 `;

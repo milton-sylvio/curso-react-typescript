@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import Card from '../../Card/styles';
 
 export const Container = styled(Card)`
-  height: 260px;
+  height: 220px;
   justify-content: space-between;
   width: 48%;
 
   aside {
     display: flex;
+    width: 48%;
   }
 `;
 
@@ -23,6 +24,7 @@ export const SideLeft = styled.aside`
 export const SideRight = styled.aside`
   flex: 1;
   justify-content: center;
+  align-items: flex-end;
 `;
 
 export const LegendContainer = styled.ul`
@@ -33,6 +35,7 @@ export const Legend = styled.li`
   align-items: center;
   display: flex;
   margin-bottom: 10px;
+  font-size: 14px;
 
   > div {
     align-items: center;
@@ -45,11 +48,11 @@ export const Legend = styled.li`
     margin-right: 10px;
     width: 45px;
 
-    &.entry {
-      background-color: ${props => props.theme.colors.success }
+    &.recurrent {
+      background-color: ${props => props.theme.colors.danger }
     }
-    &.output {
-      background-color: ${props => props.theme.colors.info }
+    &.eventual {
+      background-color: ${props => props.theme.colors.warning }
     }
   }
 `;

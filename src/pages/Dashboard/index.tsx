@@ -4,13 +4,15 @@ import ContentHeader from '../../components/ContentHeader'
 import Dropdown from '../../components/Dropdown';
 import ColorCard from '../../components/ColorCard';
 import MessageCard from '../../components/MessageCard';
-import ChartPieBox from '../../components/Charts/PieBox';
-import ChartHistoryBox from '../../components/Charts/HistoryBox';
+import ChartPie from '../../components/Charts/PieBox';
+import ChartLine from '../../components/Charts/LineBox';
+import ChartBar from '../../components/Charts/BarBox';
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 
 import monthsList from '../../utils/months';
+import formatCurrency from '../../utils/formatCurrency';
 
 import happyIcon from '../../assets/happy.svg';
 import sadIcon from '../../assets/sad.svg';
@@ -105,6 +107,13 @@ const Dashboard: React.FC = () => {
         footerTxt: 'Verifique seus gastos e tente economizar.',
         icon: sadIcon,
       }
+    } else if (totalBalance === 0 && totalExpenses === 0) {
+      return {
+        title: 'Opssssssss...!',
+        description: 'Neste mês, não hã registros de entradas e saídas!',
+        footerTxt: 'Parece que nesse mês não há registros.',
+        icon: opsIcon,
+      }
     } else if (totalBalance === 0) {
       return {
         title: 'Ufaaaa!',
@@ -121,7 +130,7 @@ const Dashboard: React.FC = () => {
       }
     }
 
-  }, [totalBalance]);
+  }, [totalBalance, totalExpenses]);
   
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses;
@@ -133,16 +142,16 @@ const Dashboard: React.FC = () => {
       {
         name: 'Entradas',
         value: totalExpenses,
-        percent: Number(expensesPercent.toFixed(1)),
-        color: '#e44c4e',
-        type: 'warning'
+        percent: Number(expensesPercent.toFixed(1)) | 0,
+        color: '#1bc5bd',
+        type: 'entry'
       },
       {
         name: 'Saídas',
         value: totalGains,
-        percent: Number(gainsPercent.toFixed(1)),
-        color: '#f7931b',
-        type: 'info'
+        percent: Number(gainsPercent.toFixed(1)) | 0,
+        color: '#8950fc',
+        type: 'output'
       },
     ];
 
@@ -198,6 +207,103 @@ const Dashboard: React.FC = () => {
 
   }, [yearSelected]);
   
+  const relationExpensevesRecurrentVersusEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    expenses.filter(expense => {
+      const date = new Date(expense.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      return month === monthSelected && year === yearSelected;
+    })
+    .forEach(expense => {
+      if (expense.frequency === 'recorrente') {
+        return amountRecurrent += Number(expense.amount);
+      }
+
+      if (expense.frequency === 'eventual') {
+        return amountEventual += Number(expense.amount);
+      }
+    });
+
+    const total = amountRecurrent + amountEventual;
+    const calcPercents = (value, totalValue) => {
+      return Number(((value / totalValue) * 100).toFixed(1)) | 0;
+    };
+    const recurrentPercent = calcPercents(amountRecurrent, total);
+    const eventualPercent = calcPercents(amountEventual, total);
+
+    return [
+      {
+        name: 'Recorrentes',
+        amount: amountRecurrent,
+        legend: formatCurrency(amountRecurrent),
+        percent: recurrentPercent,
+        color: '#dd427c',
+        type: 'recurrent',
+      },
+      {
+        name: 'Eventuais',
+        amount: amountEventual,
+        legend: formatCurrency(amountEventual),
+        percent: eventualPercent,
+        color: '#ffa800',
+        type: 'eventual',
+      },
+    ]
+  }, [monthSelected, yearSelected]);
+
+  const relationGainsRecurrentVersusEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    gains.filter(gain => {
+      const date = new Date(gain.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      return month === monthSelected && year === yearSelected;
+    })
+    .forEach(gain => {
+      if (gain.frequency === 'recorrente') {
+        return amountRecurrent += Number(gain.amount);
+      }
+
+      if (gain.frequency === 'eventual') {
+        return amountEventual += Number(gain.amount);
+      }
+    });
+
+    const calcPercents = (value, totalValue) => {
+      return Number(((value / totalValue) * 100).toFixed(1)) | 0;
+    };
+
+    const total = amountRecurrent + amountEventual;
+    const recurrentPercent = calcPercents(amountRecurrent, total);
+    const eventualPercent = calcPercents(amountEventual, total);
+
+    return [
+      {
+        name: 'Recorrentes',
+        amount: amountRecurrent,
+        legend: formatCurrency(amountRecurrent),
+        percent: recurrentPercent,
+        color: '#dd427c',
+        type: 'recurrent',
+      },
+      {
+        name: 'Eventuais',
+        amount: amountEventual,
+        legend: formatCurrency(amountEventual),
+        percent: eventualPercent,
+        color: '#ffa800',
+        type: 'eventual',
+      },
+    ]
+  }, [monthSelected, yearSelected]);
+ 
   const handleMonthSelected = (month: String) => {
     try {
       setMonthSelected(Number(month));
@@ -236,21 +342,21 @@ const Dashboard: React.FC = () => {
             amount={totalBalance}
             description="atualizado com base nas entradas e saídas"
             icon="dollar"
-            color="#4e41f0"
+            color="balance"
           />
           <ColorCard 
             title="entradas"
             amount={totalGains}
             description="última movimentação em 18/07/2020 às 11h40"
             icon="arrowUp"
-            color="#f7931b"
+            color="entry"
           />
           <ColorCard 
             title="saídas"
             amount={totalExpenses}
             description="última movimentação em 18/07/2020 às 11h40"
             icon="arrowDown"
-            color="#e44c4e"
+            color="output"
           />
         </ContainerColorsCards>
         
@@ -258,15 +364,24 @@ const Dashboard: React.FC = () => {
           title={message.title}
           description={message.description}
           footerTxt={message.footerTxt}
-          icon={message.icon} 
+          icon={message.icon}
         />
 
-        <ChartPieBox data={relationExpensesVersusGains} />
+        <ChartPie data={relationExpensesVersusGains} />
 
-        <ChartHistoryBox 
+        <ChartLine 
           data={historyData} 
-          lineColorAmountEntry="#F7931B" 
-          lineColorAmountOutput="#E44C4E" 
+          lineColorAmountEntry="#1bc5bd" 
+          lineColorAmountOutput="#8950fc" 
+        />
+
+        <ChartBar 
+          title="Entradas" 
+          data={relationGainsRecurrentVersusEventual}
+        />
+        <ChartBar 
+          title="Saídas" 
+          data={relationExpensevesRecurrentVersusEventual}
         />
       </Content>
     </Container>

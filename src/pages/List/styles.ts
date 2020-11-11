@@ -30,8 +30,8 @@ export const Filters = styled.div`
       transition: width .3s;
     }
 
-    &.tag-filter-success:after {
-      background-color: ${ props => props.theme.colors.success };
+    &.tag-filter-danger:after {
+      background-color: ${ props => props.theme.colors.danger };
     }
 
     &.tag-filter-warning:after {

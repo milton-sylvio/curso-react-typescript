@@ -4,7 +4,8 @@ import { lighten } from 'polished';
 export const Container = styled.header`
   align-items: center;
   background-color: ${ props => props.theme.colors.secondary };
-  border-bottom: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) };
+  /* border-bottom: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) }; */
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   grid-area: MH;
   justify-content: space-between;

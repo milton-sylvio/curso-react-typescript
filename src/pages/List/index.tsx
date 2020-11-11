@@ -33,8 +33,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
   const routeEntrance = 'entry';
   const recurrent = 'recorrente';
   const eventual = 'eventual';
-  const colorInfo = '#f7931b';
-  const colorWarning = '#e44c4e';
+  const colorDanger = '#dd427c';
+  const colorWarning = '#ffa800';
   const dateNow = new Date();
   
   const [data, setData] = useState<IData[]>([]);
@@ -47,7 +47,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
   const changes = useMemo(() => {
     return type === routeEntrance ? {
       title: 'Entradas',
-      color: colorInfo,
+      color: colorDanger,
       listData: gains
     } : {
       title: 'Saídas',
@@ -131,7 +131,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         id: token + token,
         description: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
-        frequency: item.frequency === recurrent ? '#4e41f0' : colorWarning,
+        frequency: item.frequency === recurrent ? colorDanger : colorWarning,
         dateFormatted: formatDate(item.date),
       }
     });
@@ -158,7 +158,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         <button 
           type="button"
           className={
-            `tag-filter tag-filter-success 
+            `tag-filter tag-filter-danger 
             ${frequencySelected.includes(recurrent) && 'tag-filter-active'}`
           }
           onClick={() => handleFrequencyClick(recurrent)}

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 // import { lighten, rgba } from 'polished';
-interface IContainerProps {
-  color: string;
-}
+// interface IContainerProps {
+//   color: string;
+// }
 
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.div`
   align-items: flex-start;
-  background-color: ${ props => props.color };
   border-radius: .25rem ;
   color: ${ props => props.theme.colors.white };
   display: flex;
@@ -16,6 +15,16 @@ export const Container = styled.div<IContainerProps>`
   padding: 1.25rem;
   position: relative;
   width: 33%;
+
+  &.entry {
+    background-color: ${ props => props.theme.colors.success };
+  }
+  &.output {
+    background-color: ${ props => props.theme.colors.info };
+  }
+  &.balance {
+    background-color: ${ props => props.theme.colors.danger };
+  }
   
   &:nth-child(2) {
     margin: 0 30px;

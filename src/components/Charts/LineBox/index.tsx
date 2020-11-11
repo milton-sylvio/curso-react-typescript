@@ -17,7 +17,7 @@ import {
   LegendItem
 } from './styles';
 
-interface IHistoryBoxProps {
+interface ILineBoxProps {
     data: {
       month: string;
       amountEntry: number;
@@ -27,7 +27,7 @@ interface IHistoryBoxProps {
   lineColorAmountOutput: string;
 }
 
-const HistoryBox: React.FC<IHistoryBoxProps> = ({
+const LineBox: React.FC<ILineBoxProps> = ({
   data,
   lineColorAmountEntry,
   lineColorAmountOutput
@@ -37,10 +37,10 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
       <h2>Histórico de saldo</h2>
 
       <Legends>
-        <LegendItem className="info">
+        <LegendItem className="entry">
           Entradas
         </LegendItem>
-        <LegendItem className="warning">
+        <LegendItem className="output">
           Saídas
         </LegendItem>
       </Legends>
@@ -74,4 +74,4 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
   </Container>
 );
 
-export default HistoryBox;
+export default LineBox;

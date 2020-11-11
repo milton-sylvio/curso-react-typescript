@@ -10,9 +10,10 @@ const dark = {
     black: '#000',
     grey: '#bfbfbf',
 
-    success: '#4e41f0',
-    info: '#f7931b',
-    warning: '#e44c4e',
+    success: '#1bc5bd',
+    info: '#8950fc',
+    warning: '#ffa800',
+    danger: '#dd427c',
   }
 };
 

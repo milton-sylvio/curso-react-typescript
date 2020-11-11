@@ -18,7 +18,7 @@ export const TitleHeader = styled.h1<ITitleHeaderProps>`
     background-color: ${ props => props.lineColor };
     content: '';
     display: block;
-    height: 10px;
+    height: 5px;
     width: 60px;
   }
 `;

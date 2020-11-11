@@ -10,9 +10,10 @@ const light = {
     black: '#fff',
     grey: '#bfbfbf',
 
-    success: '#03bb85',
-    info: '#3b5998',
-    warning: '#ff6961',
+    success: '#1bc5bd',
+    info: '#8950fc',
+    warning: '#ffa800',
+    danger: '#dd427c',
   }
 };
 
