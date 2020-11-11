@@ -12,7 +12,7 @@ export const Content = styled.section`
   justify-content: space-between;
 `;
 
-export const ContainerCards = styled.div`
+export const ContainerColorsCards = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;

@@ -4,7 +4,8 @@ import ContentHeader from '../../components/ContentHeader'
 import Dropdown from '../../components/Dropdown';
 import ColorCard from '../../components/ColorCard';
 import MessageCard from '../../components/MessageCard';
-import PieChart from '../../components/PieChart';
+import ChartPieBox from '../../components/Charts/PieBox';
+import ChartHistoryBox from '../../components/Charts/HistoryBox';
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
@@ -15,12 +16,11 @@ import happyIcon from '../../assets/happy.svg';
 import sadIcon from '../../assets/sad.svg';
 import opsIcon from '../../assets/ops.svg';
 
-import { Container, Content, ContainerCards } from './styles';
+import { Container, Content, ContainerColorsCards } from './styles';
 
 const Dashboard: React.FC = () => {
   const dateNow = new Date();
   
-  // const [data, setData] = useState<IData[]>([]);
   const [monthSelected, setMonthSelected] = useState<number>(dateNow.getMonth() + 1);
   const [yearSelected, setYearSelected] = useState<number>(dateNow.getFullYear());
 
@@ -133,17 +133,70 @@ const Dashboard: React.FC = () => {
       {
         name: 'Entradas',
         value: totalExpenses,
-        percent: expensesPercent.toFixed(1),
-        color: '#e44c4e'
+        percent: Number(expensesPercent.toFixed(1)),
+        color: '#e44c4e',
+        type: 'warning'
       },
       {
         name: 'Saídas',
         value: totalGains,
-        percent: gainsPercent.toFixed(1),
-        color: '#f7931b'
+        percent: Number(gainsPercent.toFixed(1)),
+        color: '#f7931b',
+        type: 'info'
       },
     ];
+
+    return data;
   }, [totalGains, totalExpenses])
+  
+  const historyData = useMemo(() => {
+    return monthsList.map((_, month) => {
+       let amountEntry = 0;
+
+       gains.forEach(gain => {
+         const date = new Date(gain.date);
+         const gainMonth = date.getMonth();
+         const gainYear = date.getFullYear();
+
+         if (gainMonth === month && gainYear === yearSelected) {
+          try {
+            amountEntry += Number(gain.amount);
+          } catch {
+            throw new Error('O valor de entrada é inválido, por favor, verifique o valor');
+          }
+         }
+       });
+
+       let amountOutput = 0;
+
+       expenses.forEach(expense => {
+         const date = new Date(expense.date);
+         const expenseMonth = date.getMonth();
+         const expenseYear = date.getFullYear();
+
+         if (expenseMonth === month && expenseYear === yearSelected) {
+          try {
+            amountOutput += Number(expense.amount);
+          } catch {
+            throw new Error('O valor de saída é inválido, por favor, verifique o valor');
+          }
+         }
+       });
+
+       return {
+        monthNumber: month,
+        month: monthsList[month].substr(0, 3),
+        amountEntry,
+        amountOutput
+}
+    })
+    .filter(item => {
+      const currentMonth = new Date().getMonth();
+      const currentYear = new Date().getFullYear();
+      return (yearSelected === currentYear && item.monthNumber <= currentMonth) || (yearSelected < currentYear)
+    });
+
+  }, [yearSelected]);
   
   const handleMonthSelected = (month: String) => {
     try {
@@ -177,7 +230,7 @@ const Dashboard: React.FC = () => {
       </ContentHeader>
 
       <Content>
-        <ContainerCards>
+        <ContainerColorsCards>
           <ColorCard 
             title="saldo"
             amount={totalBalance}
@@ -199,15 +252,22 @@ const Dashboard: React.FC = () => {
             icon="arrowDown"
             color="#e44c4e"
           />
-        </ContainerCards>
+        </ContainerColorsCards>
         
         <MessageCard
           title={message.title}
           description={message.description}
           footerTxt={message.footerTxt}
-          icon={message.icon} />
+          icon={message.icon} 
+        />
 
-        <PieChart />
+        <ChartPieBox data={relationExpensesVersusGains} />
+
+        <ChartHistoryBox 
+          data={historyData} 
+          lineColorAmountEntry="#F7931B" 
+          lineColorAmountOutput="#E44C4E" 
+        />
       </Content>
     </Container>
   );

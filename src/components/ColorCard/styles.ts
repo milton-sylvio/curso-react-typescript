@@ -7,13 +7,13 @@ interface IContainerProps {
 export const Container = styled.div<IContainerProps>`
   align-items: flex-start;
   background-color: ${ props => props.color };
-  border-radius: 4px;
+  border-radius: .25rem ;
   color: ${ props => props.theme.colors.white };
   display: flex;
   flex-direction: column;
   height: 160px;
   overflow: hidden;
-  padding: 20px 15px;
+  padding: 1.25rem;
   position: relative;
   width: 33%;
   

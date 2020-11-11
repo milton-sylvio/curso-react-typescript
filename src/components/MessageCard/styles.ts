@@ -1,15 +1,9 @@
 import styled from 'styled-components';
+import Card from '../Card/styles';
 
-export const Container = styled.section`
-  background-color: ${ props => props.theme.colors.tertiary };
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
+export const Container = styled(Card)`
   height: 260px;
-  justify-content: space-between;
-  padding: 30px;
-  margin: 25px 0;
-  position: relative;
+  flex-direction: column;
   width: 48%;
 
   h2 {
