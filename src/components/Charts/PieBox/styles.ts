@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Card from '../../Card/styles';
+import Card from '../../UI/Card/styles';
 
 export const Container = styled(Card)`
   height: 260px;
@@ -38,6 +38,7 @@ export const Legend = styled.li`
     align-items: center;
     border-radius: 4px;
     font-weight: 700;
+    color: ${ props => props.theme.general.colors.white };
     font-size: 12px;
     display: flex;
     height: 45px;
@@ -46,10 +47,10 @@ export const Legend = styled.li`
     width: 45px;
 
     &.entry {
-      background-color: ${props => props.theme.colors.success }
+      background-color: ${ props => props.theme.general.colors.success }
     }
     &.output {
-      background-color: ${props => props.theme.colors.info }
+      background-color: ${ props => props.theme.general.colors.primary };
     }
   }
 `;

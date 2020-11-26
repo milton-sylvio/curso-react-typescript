@@ -45,8 +45,8 @@ const ColorCard: React.FC<IColorCardProps> = ({
       />
      </strong>
 
-      <small>{ description }</small>
       <img src={getIcon} alt={title} />
+      <small>{ description }</small>
     </Container>
   );
 }

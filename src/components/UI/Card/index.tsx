@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container } from './styles';
 
-const Content: React.FC = ({ children }) => (
-  <Container>
+const Card: React.FC = ({ children }) => (
+  <Container className="card">
     { children }
   </Container>
 );
 
-export default Content;
+export default Card;

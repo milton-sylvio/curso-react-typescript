@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Card from '../../Card/styles';
+import Card from '../../UI/Card/styles';
 
 export const Container = styled(Card)`
   height: 350px;
@@ -33,9 +33,9 @@ export const LegendItem = styled.li`
   }
 
   &.entry:before  {
-    background-color: ${ props => props.theme.colors.info };
+    background-color: ${ props => props.theme.general.colors.primary };
   }
   &.output:before  {
-    background-color: ${ props => props.theme.colors.success };
+    background-color: ${ props => props.theme.general.colors.success };
   }
 `;

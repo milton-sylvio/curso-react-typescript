@@ -2,7 +2,7 @@ import React, { useMemo , useState, useEffect } from 'react';
 
 import ContentHeader from '../../components/ContentHeader';
 import HistoryFinances from '../../components/HistoryFinances';
-import Dropdown from '../../components/Dropdown';
+import Dropdown from '../../components/UI/Dropdown';
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
@@ -10,6 +10,8 @@ import expenses from '../../repositories/expenses';
 import formatCurrency from '../../utils/formatCurrency';
 import formatDate from '../../utils/formatDate';
 import monthsList from '../../utils/months';
+
+import { colors } from '../../styles/themes/general';
 
 import { Container, Content, Filters } from './styles';
 
@@ -33,8 +35,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
   const routeEntrance = 'entry';
   const recurrent = 'recorrente';
   const eventual = 'eventual';
-  const colorDanger = '#dd427c';
-  const colorWarning = '#ffa800';
+  const colorEntry = colors.danger;
+  const colorOutput = colors.warning;
   const dateNow = new Date();
   
   const [data, setData] = useState<IData[]>([]);
@@ -47,14 +49,14 @@ const List: React.FC<IRouteParams> = ({ match }) => {
   const changes = useMemo(() => {
     return type === routeEntrance ? {
       title: 'Entradas',
-      color: colorDanger,
+      color: colorEntry,
       listData: gains
     } : {
       title: 'Saídas',
-      color: colorWarning,
+      color: colorOutput,
       listData: expenses
     };
-  }, [type]);
+  }, [type, colorEntry, colorOutput]);
 
   const list = changes.listData;
 
@@ -98,7 +100,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     }
   };
 
-  const handleMonthSelected = (month: String) => {
+  const handleMonthSelected = (month: string) => {
     try {
       setMonthSelected(Number(month));
     } catch (error) {
@@ -106,7 +108,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     }
   };
 
-  const handleYearSelected = (year : String) => {
+  const handleYearSelected = (year : string) => {
     try {
       setYearSelected(Number(year ));
     } catch (error) {
@@ -131,17 +133,24 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         id: token + token,
         description: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
-        frequency: item.frequency === recurrent ? colorDanger : colorWarning,
+        frequency: item.frequency === recurrent ? colorEntry : colorOutput,
         dateFormatted: formatDate(item.date),
       }
     });
 
     setData(formattedData);
-  }, [list, monthSelected, yearSelected, frequencySelected])
+  }, [
+    list,
+    monthSelected,
+    yearSelected,
+    frequencySelected,
+    colorEntry,
+    colorOutput
+  ]);
 
   return (
     <Container>
-      <ContentHeader title={changes.title} lineColor={changes.color}>
+      <ContentHeader title={changes.title}>
         <Dropdown 
           options={months} 
           onChange={(e) => handleMonthSelected(e.target.value)}
@@ -158,7 +167,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         <button 
           type="button"
           className={
-            `tag-filter tag-filter-danger 
+            `tag-filter tag-filter-recurrent 
             ${frequencySelected.includes(recurrent) && 'tag-filter-active'}`
           }
           onClick={() => handleFrequencyClick(recurrent)}
@@ -168,7 +177,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         <button 
           type="button"
           className={
-            `tag-filter tag-filter-warning 
+            `tag-filter tag-filter-eventual 
             ${frequencySelected.includes(eventual) && 'tag-filter-active'}`
           }
           onClick={() => handleFrequencyClick(eventual)}

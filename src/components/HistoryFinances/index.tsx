@@ -13,16 +13,14 @@ const HistoryFinances: React.FC<IHistoryFinancesProps> = ({
   title,
   subtitle,
   amount
-}) => {
-  return (
-    <Container borderColor={borderColor}>
-      <div>
-        <span>{title}</span>
-        <small>{subtitle}</small>
-      </div>
-      <h3>{amount}</h3>
-    </Container>
-  );
-};
+}) => (
+  <Container borderColor={borderColor}>
+    <div>
+      <span>{title}</span>
+      <small>{subtitle}</small>
+    </div>
+    <h3>{amount}</h3>
+  </Container>
+);
 
 export default HistoryFinances;

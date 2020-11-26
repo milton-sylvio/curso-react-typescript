@@ -1,29 +1,19 @@
 import styled from 'styled-components';
-import { lighten, darken, rgba } from 'polished';
+import { darken, rgba } from 'polished';
 
 export const Container = styled.aside`
-  background-color: ${ props => props.theme.colors.secondary };
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
-  /* border-right: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) }; */
+  background-color: ${ props => darken(0.025, props.theme.aside) };
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
   grid-area: AS;
 `;
 
 export const Header = styled.header`
   align-items: center;
-  /* justify-content: center; */
-  /* border-bottom: 1px solid ${ props => lighten(0.2, props.theme.colors.secondary) }; */
   display: flex;
-  padding: 15px;
+  padding: 30px 15px;
   height: 70px;
 `; 
-export const Title = styled.span`
-  color: ${ props => props.theme.colors.white };
-  font-size: 16px;
-`; 
-export const Logo = styled.img`
-  height: 30px;
-  margin-right: 10px;
-`; 
+
 export const MenuContainer = styled.nav`
   display: flex;
   flex-direction: column;
@@ -32,13 +22,17 @@ export const MenuContainer = styled.nav`
 `; 
 
 export const MenuTitle = styled.span`
+  color: ${ props => rgba(props.theme.textColor, 0.7) };
+  font-size: ${ props => props.theme.general.fontSizes[0] };
+  margin-bottom: ${ props => props.theme.general.space[3] };
   text-transform: uppercase;
 `;
 
 export const MenuItem = styled.a`
   align-items: center;
-  border-radius: 4px;
-  color: ${ props => rgba(props.theme.colors.white, 0.7) };
+  border-radius: ${ props => props.theme.general.bordersRadius.normal };
+  color: ${ props => rgba(props.theme.textColor, 0.7) };
+  cursor: pointer;
   display: flex;
   margin-bottom: 5px;
   padding: 10px 12px;
@@ -47,13 +41,13 @@ export const MenuItem = styled.a`
   width: 90%;
   
   &:hover {
-    background-color: ${ props => darken(0.05, props.theme.colors.secondary) };
-    color: ${ props => props.theme.colors.white };
+    background-color: ${ props => darken(0.05, props.theme.aside) };
     padding-left: 20px;
   }
 
   &.actived {
-    color: ${ props => darken(0.05, props.theme.colors.warning) };
+    background-color: ${ props => darken(0.05, props.theme.aside) };
+    color: ${ props => props.theme.textColor };
   }
 
   > svg {
@@ -61,4 +55,3 @@ export const MenuItem = styled.a`
     margin-right: 10px;
   }
 `;
-

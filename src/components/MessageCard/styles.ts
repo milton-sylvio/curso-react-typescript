@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Card from '../Card/styles';
+import Card from '../UI/Card/styles';
 
 export const Container = styled(Card)`
   height: 260px;

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 
 import ContentHeader from '../../components/ContentHeader'
-import Dropdown from '../../components/Dropdown';
+import Dropdown from '../../components/UI/Dropdown';
 import ColorCard from '../../components/ColorCard';
 import MessageCard from '../../components/MessageCard';
 import ChartPie from '../../components/Charts/PieBox';
@@ -17,6 +17,8 @@ import formatCurrency from '../../utils/formatCurrency';
 import happyIcon from '../../assets/happy.svg';
 import sadIcon from '../../assets/sad.svg';
 import opsIcon from '../../assets/ops.svg';
+
+import { colors } from '../../styles/themes/general';
 
 import { Container, Content, ContainerColorsCards } from './styles';
 
@@ -141,16 +143,16 @@ const Dashboard: React.FC = () => {
     const data = [
       {
         name: 'Entradas',
-        value: totalExpenses,
-        percent: Number(expensesPercent.toFixed(1)) | 0,
-        color: '#1bc5bd',
+        value: totalGains,
+        percent: Number(gainsPercent.toFixed(1)) | 0,
+        color: colors.primary,
         type: 'entry'
       },
       {
         name: 'Saídas',
-        value: totalGains,
-        percent: Number(gainsPercent.toFixed(1)) | 0,
-        color: '#8950fc',
+        value: totalExpenses,
+        percent: Number(expensesPercent.toFixed(1)) | 0,
+        color: colors.success,
         type: 'output'
       },
     ];
@@ -241,7 +243,7 @@ const Dashboard: React.FC = () => {
         amount: amountRecurrent,
         legend: formatCurrency(amountRecurrent),
         percent: recurrentPercent,
-        color: '#dd427c',
+        color: colors.danger,
         type: 'recurrent',
       },
       {
@@ -249,7 +251,7 @@ const Dashboard: React.FC = () => {
         amount: amountEventual,
         legend: formatCurrency(amountEventual),
         percent: eventualPercent,
-        color: '#ffa800',
+        color: colors.warning,
         type: 'eventual',
       },
     ]
@@ -290,7 +292,7 @@ const Dashboard: React.FC = () => {
         amount: amountRecurrent,
         legend: formatCurrency(amountRecurrent),
         percent: recurrentPercent,
-        color: '#dd427c',
+        color: colors.danger,
         type: 'recurrent',
       },
       {
@@ -298,7 +300,7 @@ const Dashboard: React.FC = () => {
         amount: amountEventual,
         legend: formatCurrency(amountEventual),
         percent: eventualPercent,
-        color: '#ffa800',
+        color: colors.warning,
         type: 'eventual',
       },
     ]
@@ -322,7 +324,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <ContentHeader title="Dashboard" lineColor="green">
+      <ContentHeader title="Dashboard">
         <Dropdown 
           options={months} 
           onChange={(e) => handleMonthSelected(e.target.value)}

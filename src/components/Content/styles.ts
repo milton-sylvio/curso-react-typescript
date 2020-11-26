@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  background-color: ${ props => props.theme.colors.primary };
+  /* background-color: ${ props => props.theme.backoundColor }; */
   grid-area: CT;
-  padding: 30px;
+  padding: 28px;
 
   height: calc(100vh - 70px);
   overflow-y: scroll;
@@ -13,10 +13,10 @@ export const Container = styled.main`
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: ${ props => props.theme.colors.secondary };
-    border-radius: 10px;
+    background-color: ${ props => props.theme.scrollbar.thumb };
+    border-radius: ${ props => props.theme.general.bordersRadius.large };
   }
   ::-webkit-scrollbar-track {
-    background-color: ${ props => props.theme.colors.tertiary };
+    background-color: ${ props => props.theme.scrollbar.track };
   }
 `;

@@ -14,21 +14,19 @@ const MessageCard: React.FC<IMessageCard> = ({
   description,
   footerTxt,
   icon,
-}) => {
-  return (
-    <Container>
-      <header>
-        <h2>
-          { title } 
-          <img src={ icon } alt=""/>
-        </h2>
-        <h3>{ description }</h3>
-      </header>
-      <footer>
-        <small>{ footerTxt }</small>
-      </footer>
-    </Container>
-  );
-}
+}) => (
+  <Container>
+    <header>
+      <h2>
+        { title } 
+        <img src={ icon } alt=""/>
+      </h2>
+      <h3>{ description }</h3>
+    </header>
+    <footer>
+      <small>{ footerTxt }</small>
+    </footer>
+  </Container>
+);
 
 export default MessageCard;

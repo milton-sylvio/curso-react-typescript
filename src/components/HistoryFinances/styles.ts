@@ -1,20 +1,16 @@
 import styled from 'styled-components';
+import Card from '../UI/Card/styles';
 
 interface IContainerProps {
   borderColor: string;
 }
 
-export const Container = styled.li<IContainerProps>`
+export const Container = styled(Card)<IContainerProps>`
   align-items: center;
-  background-color:  ${ props => props.theme.colors.tertiary };
   border-left: 8px solid ${ props => props.borderColor };
-  border-radius: 5px;
-  color:  ${ props => props.theme.colors.white };
   cursor: pointer;
-  display: flex;
   justify-content: space-between;
-  list-style: none;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
   padding: 10px 15px;
   transition: all 0.3s;
 

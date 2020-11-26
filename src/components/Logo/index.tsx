@@ -1,0 +1,17 @@
+import React from 'react';
+
+import symbolLogo from '../../assets/logo.svg';
+
+import { Container } from './styles';
+
+const Logo: React.FC = () => (
+  <Container>
+    <img src={symbolLogo} alt="Minha Carteira" />
+
+    <span>
+      Minha <strong>Carteira</strong>
+    </span>
+  </Container>
+);
+
+export default Logo;

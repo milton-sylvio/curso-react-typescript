@@ -1,20 +1,36 @@
+import general from './general';
+
+const mode = 'dark';
+
+const backoundColor = general.colors.blue[2];
+const textColor = general.colors.white;
+
+// COMPONENTES
+const card = general.colors.blue[0];
+const scrollbar = {
+  thumb: general.colors.blue[0],
+  track: general.colors.blue[1],
+}
+const dropdown = general.colors.blue[1];
+const aside = general.colors.blue[1];
+const header = general.colors.blue[1];
+const input = {
+  borderColor: general.colors.blue[0],
+  bg: general.colors.blue[2],
+  color: general.colors.white,
+};
+
 const dark = {
-  title: 'dark',
-
-  colors: {
-    primary: '#1b1f38',
-    secondary: '#252a48',
-    tertiary: '#313862',
-
-    white: '#fff',
-    black: '#000',
-    grey: '#bfbfbf',
-
-    success: '#1bc5bd',
-    info: '#8950fc',
-    warning: '#ffa800',
-    danger: '#dd427c',
-  }
+  general,
+  mode,
+  backoundColor,
+  textColor,
+  card,
+  scrollbar,
+  dropdown,
+  aside,
+  header,
+  input,
 };
 
 export default dark;

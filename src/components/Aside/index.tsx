@@ -6,21 +6,22 @@ import {
   MdExitToApp
 } from 'react-icons/md';
 
-import logoImg from '../../assets/logo.svg';
+import Logo from '../Logo';
+
+import { useAuth } from '../../hooks/auth';
 
 import { 
   Container, 
   Header, 
-  Logo, 
-  Title,
   MenuContainer, 
-  MenuItem 
+  MenuItem,
+  MenuTitle
 } from './styles';
 
 const Aside: React.FC = () => {
   const menu = [
     {
-      path: '/dashboard',
+      path: '/',
       text: 'Dashboard',
       icon: <MdDashboard />,
     }, 
@@ -34,22 +35,18 @@ const Aside: React.FC = () => {
       text: 'Saídas',
       icon: <MdArrowDownward />,
     },
-    {
-      path: '#',
-      text: 'Sair',
-      icon: <MdExitToApp />,
-    },
   ];
 
+  const { signOut } = useAuth();
 
   return (
     <Container>
       <Header>
-        <Logo src={logoImg} alt="Logo Minha Carteira" />
-        <Title>Minha <strong>Carteira</strong></Title>
+        <Logo />
       </Header>
 
       <MenuContainer>
+        <MenuTitle>Menu</MenuTitle>
         {
           menu.map(item => (
             <MenuItem 
@@ -66,6 +63,13 @@ const Aside: React.FC = () => {
             </MenuItem>
           ))
         }
+        <MenuItem
+          title="Sair"
+          onClick={signOut}
+        >
+          <MdExitToApp />
+          Sair
+        </MenuItem>
       </MenuContainer>
     </Container>
   );

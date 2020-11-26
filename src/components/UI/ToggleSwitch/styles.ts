@@ -6,15 +6,15 @@ export const Container = styled.div`
 `;
 
 export const ToggleSwitchLabel = styled.span`
-  color: ${ props => props.theme.colors.white };
+  font-size: 14px;
 `;
 
 export const ToggleSwitchContainer = styled.label`
   display: inline-block;
-  height: 20px;
+  height: 14px;
   margin: 0 10px;
   position: relative;
-  width: 60px;
+  width: 40px;
 
   > input {
     height: 0;
@@ -24,8 +24,8 @@ export const ToggleSwitchContainer = styled.label`
 `;
 
 export const ToggleSwitchSpan = styled.span`
-  background-color: ${ props => props.theme.colors.info };
-  border-radius: 26px;
+  background-color: ${ props => props.theme.general.colors.primary };
+  border-radius: 20px;
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -35,25 +35,25 @@ export const ToggleSwitchSpan = styled.span`
   transition: .4s;
 
   &:before {
-    background-color: ${ props => props.theme.colors.white };
-    border-radius: 50%;
+    background-color: ${ props => props.theme.general.colors.white };
+    border-radius: ${ props => props.theme.general.bordersRadius.rounded };
     bottom: -3px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
     content: "";
-    height: 26px;
+    height: 20px;
     left: 2px;
     position: absolute;
     transition: .4s;
-    width: 26px;
+    width: 20px;
   }
 `;
 
 export const ToggleSwitchInput = styled.input`
   &:checked + .switch-slider {
-    background-color: ${ props => props.theme.colors.warning };
+    background-color: ${ props => props.theme.general.colors.secondary };
 
     &:before {
-      transform: translateX(30px);
+      transform: translateX(20px);
     }
   }
 `;

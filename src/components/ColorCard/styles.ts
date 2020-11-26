@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { lighten, rgba } from 'polished';
+import { rgba } from 'polished';
 // interface IContainerProps {
 //   color: string;
 // }
@@ -7,7 +7,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   align-items: flex-start;
   border-radius: .25rem ;
-  color: ${ props => props.theme.colors.white };
+  box-shadow: 0 4px 6px ${ props => rgba(props.theme.general.colors.black, 0.06 ) };
+  color: ${ props => props.theme.general.colors.white };
   display: flex;
   flex-direction: column;
   height: 160px;
@@ -16,14 +17,14 @@ export const Container = styled.div`
   position: relative;
   width: 33%;
 
+  &.balance {
+    background-color: ${ props => props.theme.general.colors.danger };
+  }
   &.entry {
-    background-color: ${ props => props.theme.colors.success };
+    background-color: ${ props => props.theme.general.colors.success };
   }
   &.output {
-    background-color: ${ props => props.theme.colors.info };
-  }
-  &.balance {
-    background-color: ${ props => props.theme.colors.danger };
+    background-color: ${ props => props.theme.general.colors.primary };
   }
   
   &:nth-child(2) {
@@ -37,7 +38,6 @@ export const Container = styled.div`
 
   > strong {
     font-size: 28px;
-
   }
 
   > small {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Card from '../../Card/styles';
+import Card from '../../UI/Card/styles';
 
 export const Container = styled(Card)`
   height: 220px;
@@ -14,7 +14,7 @@ export const Container = styled(Card)`
 
 export const SideLeft = styled.aside`
   align-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   > * {
     flex: 1;
@@ -39,8 +39,9 @@ export const Legend = styled.li`
 
   > div {
     align-items: center;
-    border-radius: 4px;
-    font-weight: 700;
+    color: ${props => props.theme.general.colors.white };
+    border-radius: ${props => props.theme.general.bordersRadius.normal };
+    font-weight: ${props => props.theme.general.fontWeights.bold };
     font-size: 12px;
     display: flex;
     height: 45px;
@@ -49,10 +50,10 @@ export const Legend = styled.li`
     width: 45px;
 
     &.recurrent {
-      background-color: ${props => props.theme.colors.danger }
+      background-color: ${props => props.theme.general.colors.danger }
     }
     &.eventual {
-      background-color: ${props => props.theme.colors.warning }
+      background-color: ${props => props.theme.general.colors.warning }
     }
   }
 `;

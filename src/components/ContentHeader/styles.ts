@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-interface ITitleHeaderProps {
-  lineColor: string;
-}
-
 export const Container = styled.header`
   align-items: center;
   display: flex;
@@ -11,11 +7,9 @@ export const Container = styled.header`
   margin-bottom: 50px;
 `;
 
-export const TitleHeader = styled.h1<ITitleHeaderProps>`
-  color: ${ props => props.theme.colors.white };
-  
+export const TitleHeader = styled.h1`  
   &::after {
-    background-color: ${ props => props.lineColor };
+    background-color: ${ props => props.theme.general.colors.primary };
     content: '';
     display: block;
     height: 5px;

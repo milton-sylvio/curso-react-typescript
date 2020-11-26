@@ -8,8 +8,9 @@ export default createGlobalStyle `
   }
 
   body {
-    color: ${ props => props.theme.colors.white };
-    font-size: 16px;
+    background-color: ${ props => props.theme.backoundColor };
+    color: ${ props => props.theme.textColor };
+    font-size: ${ props => props.theme.general.fontSizes[2] };
   }
   
   html,
@@ -29,5 +30,29 @@ export default createGlobalStyle `
 
   button { 
     cursor: pointer;
+  }
+
+  strong {
+    font-weight: ${ props => props.theme.general.fontWeights.bold };
+  }
+
+  input, 
+  textarea, 
+  select {
+    background-image: none;
+    box-sizing: border-box;
+    outline: none;
+  }
+  input, 
+  textarea {
+    -webkit-appearance: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: ${ props => props.theme.general.fontWeights.bold };
+  }
+
+  h1 {
+    font-size: ${ props => props.theme.general.fontSizes[5] };
   }
 `;
