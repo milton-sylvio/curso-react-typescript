@@ -52,8 +52,11 @@ const space = [
   '0',
   '4px',
   '8px',
+  '12px',
   '16px',
+  '20px',
   '24px',
+  '28px',
   '32px',
   '40px',
   '48px',
@@ -63,6 +66,12 @@ const space = [
   '112px',
   '128px'
 ];
+
+const sizes = {
+  large: '1012px',
+  medium: '768px',
+  small: '544px',
+}
 
 // const button = {
 //   primary: {
@@ -80,6 +89,7 @@ const general = {
   fontWeights,
   lineHeights,
   space,
+  sizes,
   // button,
 };
 

@@ -1,16 +1,26 @@
 import React, { useMemo, useState } from 'react';
 
-import ToggleSwitch from '../UI/ToggleSwitch';
+import {
+  MdMenu,
+  MdClose
+} from 'react-icons/md';
+
 import emojiList from '../../utils/emojis';
 
 import { useTheme } from '../../hooks/theme';
+import { useMenuMobile } from '../../hooks/menu';
+
+import Logo from '../Logo';
 
 import { 
   Container,
   Profile,
   Welcome,
   UserName,
-  Emojis 
+  Emojis,
+  MenuMobile,
+  Toggle,
+  ContainerActionsMobile
 } from './styles';
 
 const Header: React.FC = () => {
@@ -19,6 +29,8 @@ const Header: React.FC = () => {
     return emojiList[index]
   }, []);
 
+  const { handleToggleMenu, toggleMenu } = useMenuMobile();
+  
   const { toggleTheme, theme } = useTheme();
   const [ getTheme, setTheme ] = useState(() => theme.mode === 'dark' ? true : false);
   
@@ -26,13 +38,26 @@ const Header: React.FC = () => {
     setTheme(!getTheme);
     toggleTheme();
   }
-  
+
   return (
     <Container>
-      <ToggleSwitch
+      <ContainerActionsMobile>
+        <Logo />
+        
+        <MenuMobile 
+          onClick={handleToggleMenu} 
+          className={toggleMenu ? 'open' : ''} 
+          type="button"
+        >
+          { toggleMenu ? <MdClose className="icon-close" /> : <MdMenu className="icon-menu" /> }          
+        </MenuMobile>
+      </ContainerActionsMobile>
+
+      <Toggle
         labelLeft="Light"
         labelRight="Dark"
         checked={getTheme}
+        className="header"
         onChange={handleChangeTheme} 
       />
 

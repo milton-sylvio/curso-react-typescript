@@ -13,5 +13,9 @@ export const Container = styled.div`
   > span {
     font-size: ${ props => props.theme.general.fontSizes[2] };
     margin-left: 10px;
+
+    &.hidden {
+      display: none;
+    }
   }
 `;

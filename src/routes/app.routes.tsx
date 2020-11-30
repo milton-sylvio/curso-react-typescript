@@ -5,12 +5,14 @@ import Layout from '../components/Layout';
 
 import Dashboard from '../pages/Dashboard';
 import List from '../pages/List';
+import NewRegister from '../pages/NewRegister';
 
 const AppRoutes: React.FC = () => (
   <Layout>
     <Switch>
       <Route path="/" exact component={Dashboard} />
       <Route path="/list/:type" component={List} />
+      <Route path="/new-register" exact component={NewRegister} />
     </Switch>
   </Layout>
 );

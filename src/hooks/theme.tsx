@@ -42,6 +42,11 @@ interface ITheme {
       default: number;
     };
     space: string[];
+    sizes: {
+      large: string;
+      medium: string;
+      small: string;
+    };
   };
   backoundColor: string;
   textColor: string;

@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 20px;
 `;
 
 export const ToggleSwitchLabel = styled.span`
-  font-size: 14px;
+  font-size: ${ props => props.theme.general.fontSizes[1] };
+
+  @media(max-width: ${ props => props.theme.general.sizes.small }) {
+    font-size: ${ props => props.theme.general.fontSizes[0] };
+  }
 `;
 
 export const ToggleSwitchContainer = styled.label`

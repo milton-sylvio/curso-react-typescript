@@ -11,6 +11,7 @@ interface IToggleSwitchProps {
   checked: boolean;
   labelLeft: string;
   labelRight: string;
+  className: string;
   onChange(): void;
 }
 
@@ -18,12 +19,10 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
   checked, 
   labelLeft,
   labelRight,
+  className,
   onChange, 
-}) => {
-  // console.log('checked:', checked);
-  
-  return (
-  <Container>
+}) => (
+  <Container className={className}>
     <ToggleSwitchLabel>
       { labelLeft }
     </ToggleSwitchLabel>
@@ -41,6 +40,6 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
       { labelRight }
     </ToggleSwitchLabel>
   </Container>
-)};
+);
 
 export default ToggleSwitch;

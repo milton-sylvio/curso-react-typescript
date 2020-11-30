@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import {
   MdDashboard,
   MdArrowDownward,
   MdArrowUpward,
-  MdExitToApp
+  MdExitToApp,
+  MdNoteAdd
 } from 'react-icons/md';
 
 import Logo from '../Logo';
 
 import { useAuth } from '../../hooks/auth';
+import { useMenuMobile } from '../../hooks/menu';
 
 import { 
   Container, 
   Header, 
   MenuContainer, 
   MenuItem,
-  MenuTitle
+  MenuTitle,
+  Toggle
 } from './styles';
+
+import { useTheme } from '../../hooks/theme';
 
 const Aside: React.FC = () => {
   const menu = [
@@ -24,6 +30,11 @@ const Aside: React.FC = () => {
       path: '/',
       text: 'Dashboard',
       icon: <MdDashboard />,
+    }, 
+    {
+      path: '/new-register',
+      text: 'Novo registro',
+      icon: <MdNoteAdd />,
     }, 
     {
       path: '/list/entry',
@@ -39,8 +50,17 @@ const Aside: React.FC = () => {
 
   const { signOut } = useAuth();
 
+  const { toggleTheme, theme } = useTheme();
+  const [ getTheme, setTheme ] = useState(() => theme.mode === 'dark' ? true : false);
+  const { toggleMenu } = useMenuMobile();
+
+  const handleChangeTheme = () => {
+    setTheme(!getTheme);
+    toggleTheme();
+  }
+
   return (
-    <Container>
+    <Container menuIsOpen={toggleMenu}>
       <Header>
         <Logo />
       </Header>
@@ -71,6 +91,15 @@ const Aside: React.FC = () => {
           Sair
         </MenuItem>
       </MenuContainer>
+
+      <Toggle
+        labelLeft="Light"
+        labelRight="Dark"
+        checked={getTheme}
+        className="header"
+        onChange={handleChangeTheme} 
+      />
+
     </Container>
   );
 }

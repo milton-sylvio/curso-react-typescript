@@ -20,19 +20,18 @@ export default createGlobalStyle `
     overflow-x: hidden;
   }
 
-  *,
-  button,
-  input {
-    border: 0;
+  body {
     font-family: 'Montserrat', sans-serif;
-    outline: 0;
   }
 
-  button { 
+  a,
+  button,
+  select { 
     cursor: pointer;
   }
 
-  strong {
+  strong,
+  .strong {
     font-weight: ${ props => props.theme.general.fontWeights.bold };
   }
 
@@ -48,7 +47,18 @@ export default createGlobalStyle `
     -webkit-appearance: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  button,
+  input[type="button"] {
+    border: 0;
+    outline: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: ${ props => props.theme.general.fontWeights.bold };
   }
 

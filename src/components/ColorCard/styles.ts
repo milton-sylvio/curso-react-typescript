@@ -15,7 +15,7 @@ export const Container = styled.div`
   overflow: hidden;
   padding: 1.25rem;
   position: relative;
-  width: 33%;
+  width: 100%;
 
   &.balance {
     background-color: ${ props => props.theme.general.colors.danger };
@@ -28,16 +28,17 @@ export const Container = styled.div`
   }
   
   &:nth-child(2) {
-    margin: 0 30px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
   > span {
     font-weight: 700;
-    font-size: 20px;
+    font-size: ${ props => props.theme.general.fontSizes[3] };
   }
 
   > strong {
-    font-size: 28px;
+    font-size: ${ props => props.theme.general.fontSizes[5] };
   }
 
   > small {
@@ -52,5 +53,9 @@ export const Container = styled.div`
     position: absolute;
     right: -30px;
     top: -15px;
+  }
+
+  @media(max-width: ${ props => props.theme.general.sizes.medium }) {
+    margin-bottom: ${ props => props.theme.general.space[3] };
   }
 `;

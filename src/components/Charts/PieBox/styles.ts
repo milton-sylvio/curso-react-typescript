@@ -1,28 +1,44 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Card from '../../UI/Card/styles';
 
+const animate = keyframes`
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: .3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
 export const Container = styled(Card)`
+  animation: ${ animate } 0.5s;
   height: 260px;
-  justify-content: space-between;
   width: 48%;
 
-  aside {
-    display: flex;
+  @media(max-width: ${ props => props.theme.general.sizes.medium }) {
+    height: 200px;
+    width: 100%;
   }
 `;
 
 export const SideLeft = styled.aside`
+  display: flex;
   align-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   flex-wrap: wrap;
-
-  > * {
-    flex: 1;
-  }
+  width: 38%;
 `;
 
 export const SideRight = styled.aside`
   flex: 1;
   justify-content: center;
+  width: 58%;
 `;
 
 export const LegendContainer = styled.ul`
@@ -36,11 +52,11 @@ export const Legend = styled.li`
 
   > div {
     align-items: center;
-    border-radius: 4px;
-    font-weight: 700;
+    border-radius: ${ props => props.theme.general.bordersRadius.normal };
     color: ${ props => props.theme.general.colors.white };
-    font-size: 12px;
     display: flex;
+    font-size: ${ props => props.theme.general.fontSizes[0] };
+    font-weight: ${ props => props.theme.general.fontWeights.bold };
     height: 45px;
     justify-content: center;
     margin-right: 10px;
@@ -51,6 +67,11 @@ export const Legend = styled.li`
     }
     &.output {
       background-color: ${ props => props.theme.general.colors.primary };
+    }
+
+    @media(max-width: ${ props => props.theme.general.sizes.medium }) {
+      height: 35px;
+      width: 35px;
     }
   }
 `;

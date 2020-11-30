@@ -8,7 +8,7 @@ export const Container = styled.section`
   margin: 25px 0 0;
   min-height: 0;
   min-width: 0;
-  padding: 1.55rem;
+  padding: ${ props => props.theme.general.space[4] };
   position: relative;
   width: 100%;
 `;

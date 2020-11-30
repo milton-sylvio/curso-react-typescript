@@ -28,7 +28,6 @@ const AuthProvider: React.FC = ({ children }) => {
   };
 
   const signOut = () => {
-    console.log('Clicou no signOut!');
     localStorage.removeItem(minhaCarteiraLogged);
     setLogged(false);
   }

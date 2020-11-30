@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { 
   Container, 
   TitleHeader,
@@ -7,7 +8,7 @@ import {
 
 interface IContentHeaderProps {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const ContentHeader: React.FC<IContentHeaderProps> = ({

@@ -27,6 +27,7 @@ const PieBox: React.FC<IPieChartProps> = ({data}) => (
   <Container>
     <SideLeft>
       <h2>Relação</h2>
+
       <LegendContainer>
         {
           data.map(indicator => (
