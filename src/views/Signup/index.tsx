@@ -22,6 +22,8 @@ import {
   FormLabel 
 } from '../../components/UI/Form/styles';
 
+import { paths } from '../../configs/paths';
+
 interface IUserData {
   name: string;
   email: string;
@@ -164,7 +166,7 @@ const SignUp: React.FC<IUserData> = () => {
       <p>
         Já tem cadastro? 
         <a 
-          href="/" 
+          href={paths.SIGN_IN.url} 
           title="Clique aqui para entrar"
         >
           Clique aqui.
