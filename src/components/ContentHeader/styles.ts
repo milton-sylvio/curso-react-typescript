@@ -5,6 +5,7 @@ export const Container = styled.header`
   display: flex;
   justify-content: space-between;
   margin-bottom: ${ props => props.theme.general.space[8] };
+  width: 100%;
   
   @media(max-width: ${ props => props.theme.general.sizes.medium }) {
     align-items: flex-start;
@@ -16,6 +17,7 @@ export const Container = styled.header`
 export const TitleHeader = styled.h1` 
   @media(max-width: ${ props => props.theme.general.sizes.medium }) {
     margin-bottom: ${ props => props.theme.general.space[4] };
+    font-size: ${ props => props.theme.general.fontSizes[4] };
   }
 
   &::after {
@@ -29,8 +31,21 @@ export const TitleHeader = styled.h1`
 
 export const Controllers = styled.div`
   display: flex;
-  /* 
-  width: 300px; */
+
+  .dropdown {
+    &:first-child {
+      margin-right: ${ props => props.theme.general.space[3] };
+      min-width: 110px;
+    }
+
+    @media(max-width: ${ props => props.theme.general.sizes.medium }) {
+      .dropdown {
+        &:first-child {
+          margin-right: ${ props => props.theme.general.space[2] };
+        }
+      }
+    }
+  }
 
   &:nth-child(0) {
     margin-right: ${ props => props.theme.general.space[2] };

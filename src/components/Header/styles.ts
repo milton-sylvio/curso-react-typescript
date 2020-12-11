@@ -41,7 +41,7 @@ export const Welcome = styled.h3`
   }
 `;
 
-export const UserName = styled.span`
+export const UserName = styled.small`
   display: block;
   font-weight: ${ props => props.theme.general.fontWeights.normal };
 `;

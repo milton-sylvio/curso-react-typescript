@@ -73,5 +73,14 @@ export const Legend = styled.li`
       height: 35px;
       width: 35px;
     }
+
+    @media(max-width: ${ props => props.theme.general.sizes.small }) {
+      height: 28px;
+      width: 28px;
+    }
+  }
+
+  @media(max-width: ${ props => props.theme.general.sizes.medium }) {
+    font-size: ${ props => props.theme.general.fontSizes[1] };
   }
 `;

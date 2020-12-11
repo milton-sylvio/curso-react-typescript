@@ -1,47 +1,34 @@
-import React, { createContext, useState, useContext } from 'react';
-import strings from '../utils/strings';
+import React, { createContext, useEffect, useState } from 'react';
 
+import firebase from '../firebase';
 interface IAuthContext {
-  logged: boolean;
-  signIn(email: string, password: string): void;
-  signOut(): void;
+  user: firebase.User | null;
+  authenticated: boolean;
+  setUser: any;
+  loadingAuthState: boolean;
 }
 
-const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
-const AuthProvider: React.FC = ({ children }) => {
-  const minhaCarteiraLogged = `${strings.minhaCarteira}logged`;
+export const AuthProvider: React.FC = ({ children }) => {
+  const [user, setUser] = useState(null as firebase.User | null);
+  const [loadingAuthState, setLoadingAuthState] = useState(true);
 
-  const [logged, setLogged] = useState<boolean>(() => {
-    const isLogged = localStorage.getItem(minhaCarteiraLogged);
-
-    return !!isLogged;
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user: any) => {
+      setUser(user);
+      setLoadingAuthState(false);
   });
-
-  const signIn = (email: string, password: string) => {
-    if (email === 'm@g.co' && password === '123') {
-      localStorage.setItem(minhaCarteiraLogged, 'true');
-      setLogged(true);
-    } else {
-      alert('Senha ou usuário inválidos!');
-    }
-  };
-
-  const signOut = () => {
-    localStorage.removeItem(minhaCarteiraLogged);
-    setLogged(false);
-  }
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ logged, signIn, signOut }}>
+    <AuthContext.Provider value={{
+      user,
+      authenticated: user !== null,
+      setUser,
+      loadingAuthState
+    }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-function useAuth(): IAuthContext {
-  const context = useContext(AuthContext);
-  return context;
-}
-
-export { AuthProvider, useAuth };

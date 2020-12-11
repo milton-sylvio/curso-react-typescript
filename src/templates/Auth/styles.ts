@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { rgba, math } from 'polished';
 
 import Card from '../../components/UI/Card/styles';
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +10,16 @@ export const Container = styled.main`
   margin: 0 auto;
   height: 100vh;
   max-width: 350px;
+
+  p {
+    font-size: ${ props => props.theme.general.fontSizes[0] };
+    margin-top: ${ props => props.theme.general.space[3] };
+    text-align: center;
+
+    a {
+      margin-left: ${ props => props.theme.general.space[1] };
+    }
+  }
 `;
 
 export const ContainerSignin = styled.section`
@@ -19,7 +28,8 @@ export const ContainerSignin = styled.section`
   width: 100%;
 `;
 
-export const FormContainer = styled(Card)`
+export const ContainerForm = styled(Card)`
+  display: flex;
   flex: 0;
   flex-direction: column;
   padding: 30px;
@@ -36,22 +46,6 @@ export const FormContainer = styled(Card)`
       width: 50px;
     }
   }
-
-  label {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: ${ props => props.theme.general.space[1] };
-
-    small {
-      color: ${ props => rgba(props.theme.textColor, 0.7) };
-      cursor: pointer;
-      font-size: ${ props => math(`${props.theme.general.fontSizes[0]} - 2`) };
-      text-transform: uppercase;
-
-      &:hover {
-        color: ${ props => props.theme.general.colors.primary }
-      }
-    }
-  }
 `;
+
+

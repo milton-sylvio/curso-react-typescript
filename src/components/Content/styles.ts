@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-export const Container = styled.div`
+export const Container = styled.main`
   grid-area: CT;
   padding: ${ props => props.theme.general.space[7] };
 

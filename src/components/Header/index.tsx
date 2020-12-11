@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 
 import {
   MdMenu,
@@ -11,6 +11,9 @@ import { useTheme } from '../../hooks/theme';
 import { useMenuMobile } from '../../hooks/menu';
 
 import Logo from '../Logo';
+
+import firebase from "../../firebase";
+import "firebase/firestore";
 
 import { 
   Container,
@@ -39,6 +42,27 @@ const Header: React.FC = () => {
     toggleTheme();
   }
 
+  const [userName, setUserName] = useState();
+
+  useEffect(() => { 
+    const db = firebase.firestore();
+
+    db.collection('Users')
+      .doc(firebase.auth().currentUser!.uid)
+      .get()
+      .then(res => {
+        const user = res.data();
+        if (user) {
+          const fullname = user['name'];
+          // const name = fullname.split(' ');
+          // const n = name[0] + ' ' + name[1];
+
+          setUserName(fullname);
+        }
+      })
+}, []);
+
+
   return (
     <Container>
       <ContainerActionsMobile>
@@ -66,7 +90,7 @@ const Header: React.FC = () => {
 
         <Welcome>
           Olá, 
-          <UserName>Milton Sylvio</UserName>
+          <UserName>{userName}</UserName>
         </Welcome>
       </Profile>
     </Container>

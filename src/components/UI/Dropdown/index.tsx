@@ -6,19 +6,25 @@ interface IDropdownProps {
     value: string | number,
     label: string | number,
   }[],
-  onChange(envent: React.ChangeEvent<HTMLSelectElement>): void | undefined;
   defaultValue?: string | number;
+  id?: string;
+  required?: boolean;
+  onChange(envent: React.ChangeEvent<HTMLSelectElement>): void | undefined;
 }
 
 const Dropdown: React.FC<IDropdownProps> = ({ 
   options, 
+  id, 
+  required,
+  defaultValue,
   onChange, 
-  defaultValue 
 }) => (
-  <Container>
-    <select 
+  <Container
+      id={id}
       onChange={onChange}
       defaultValue={defaultValue}
+      required={required}
+      className="dropdown"
     >
       {
         options.map(option => (
@@ -30,7 +36,6 @@ const Dropdown: React.FC<IDropdownProps> = ({
         </option>
         ))
       }
-    </select>
   </Container>
 );
 

@@ -44,11 +44,15 @@ const PieBox: React.FC<IPieChartProps> = ({data}) => (
     <SideRight>
       <ResponsiveContainer>
         <PieChart>
-          <Pie data={data} dataKey="percent">
+          <Pie 
+            data={data} 
+            dataKey="percent"
+            labelLine={false}
+            outerRadius={80} 
+            label
+          >
             {
-              data.map(d => (
-                <Cell key={d.name} fill={d.color} />
-              ))
+              data.map((d) => <Cell key={d.name} fill={d.color} /> )
             }
           </Pie>
         </PieChart>

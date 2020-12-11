@@ -6,15 +6,15 @@ export const Container = styled.button`
   -ms-user-select: none;
   -webkit-user-select: none;
   background-color: ${ props => props.theme.general.colors.primary };
-  border-radius: .25rem;
+  border-radius: ${ props => props.theme.general.bordersRadius.normal };
   border: 1px solid transparent;
   box-shadow: 0 0 5px .2rem ${ props => rgba(props.theme.general.colors.primary, .35) };
   color: ${ props => props.theme.general.colors.white };
   display: inline-block;
-  font-size: 1rem;
+  font-size: ${ props => props.theme.general.fontSizes[2] };
   font-weight: ${ props => props.theme.general.fontWeights.normal };
   line-height: 1.5;
-  padding: .375rem .75rem;
+  padding: ${ props => props.theme.general.space[2] } ${ props => props.theme.general.space[5] };
   text-align: center;
   transition: all .15s ease-in-out;
   user-select: none;

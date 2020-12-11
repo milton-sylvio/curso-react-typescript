@@ -32,7 +32,7 @@ interface IData {
 }
 
 const List: React.FC<IRouteParams> = ({ match }) => {
-  const routeEntrance = 'entry';
+  const routeEntrance = 'entradas';
   const recurrent = 'recorrente';
   const eventual = 'eventual';
   const colorEntry = colors.danger;

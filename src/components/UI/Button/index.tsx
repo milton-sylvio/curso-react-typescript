@@ -8,7 +8,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const UiButton: React.FC<IButtonProps> = ({icon, children, ...rest }) => (
   <Container { ...rest }>
-      <img src={icon} alt="" />
+      { icon && <img src={icon} alt="" />}
       {children}
   </Container>
 );

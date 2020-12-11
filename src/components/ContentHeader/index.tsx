@@ -15,7 +15,7 @@ const ContentHeader: React.FC<IContentHeaderProps> = ({
   title,
   children
 }) => (
-  <Container>
+  <Container className="content-header">
     <TitleHeader>
       {title}
     </TitleHeader>

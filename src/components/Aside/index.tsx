@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
+import firebase from '../../firebase';
+import 'firebase/firestore';
+
+import { paths } from '../../configs/paths';
+
 import {
   MdDashboard,
   MdArrowDownward,
@@ -10,7 +16,6 @@ import {
 
 import Logo from '../Logo';
 
-import { useAuth } from '../../hooks/auth';
 import { useMenuMobile } from '../../hooks/menu';
 
 import { 
@@ -27,28 +32,38 @@ import { useTheme } from '../../hooks/theme';
 const Aside: React.FC = () => {
   const menu = [
     {
-      path: '/',
-      text: 'Dashboard',
+      path: paths.DASHBOARD.url,
+      text: paths.DASHBOARD.title,
       icon: <MdDashboard />,
     }, 
     {
-      path: '/new-register',
-      text: 'Novo registro',
+      path: paths.NEW_REGISTER.url,
+      text: paths.NEW_REGISTER.title,
       icon: <MdNoteAdd />,
     }, 
     {
-      path: '/list/entry',
-      text: 'Entradas',
+      path: paths.ENTRY.url,
+      text: paths.ENTRY.title,
       icon: <MdArrowUpward />,
     }, 
     {
-      path: '/list/outputs',
-      text: 'Saídas',
+      path: paths.OUTPUT.url,
+      text: paths.OUTPUT.title,
       icon: <MdArrowDownward />,
     },
   ];
 
-  const { signOut } = useAuth();
+  const history = useHistory();
+  const handleSignOut = (event: any) => {
+     event.preventDefault();
+     
+     firebase
+      .auth()
+      .signOut()
+      .then(res => {
+        history.push(paths.SIGN_IN.url);
+      })
+   }
 
   const { toggleTheme, theme } = useTheme();
   const [ getTheme, setTheme ] = useState(() => theme.mode === 'dark' ? true : false);
@@ -85,7 +100,7 @@ const Aside: React.FC = () => {
         }
         <MenuItem
           title="Sair"
-          onClick={signOut}
+          onClick={handleSignOut}
         >
           <MdExitToApp />
           Sair

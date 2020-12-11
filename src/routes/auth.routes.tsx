@@ -1,12 +1,20 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import SignIn from '../pages/Signin';
+import AuthTemplate from '../templates/Auth';
+
+import SignIn from '../views/Signin';
+import SignUp from '../views/Signup';
+
+import { paths } from '../configs/paths';
 
 const AuthRoutes: React.FC = () => (
-  <Switch>
-    <Route path="/" component={SignIn} />
-  </Switch>
+  <AuthTemplate>
+    <Switch>
+      <Route path={paths.SIGN_IN.url} exact component={SignIn} />
+      <Route path={paths.SIGN_UP.url}component={SignUp} />
+    </Switch>
+  </AuthTemplate>
 );
 
 export default AuthRoutes;

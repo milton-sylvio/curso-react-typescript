@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
-// interface IContainerProps {
-//   color: string;
-// }
 
 export const Container = styled.div`
   align-items: flex-start;

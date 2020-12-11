@@ -18,7 +18,6 @@ const MenuMobileProvider: React.FC = ({ children }) => {
       {children}
     </MenuMobileContext.Provider>
   )
-
 };
 
 function useMenuMobile(): IMenuMobile {

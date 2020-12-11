@@ -41,6 +41,7 @@ export default createGlobalStyle `
     background-image: none;
     box-sizing: border-box;
     outline: none;
+    font-family: inherit;
   }
   input, 
   textarea {
@@ -64,5 +65,18 @@ export default createGlobalStyle `
 
   h1 {
     font-size: ${ props => props.theme.general.fontSizes[5] };
+  }
+
+  a {
+    color: ${ props => props.theme.general.colors.secondary };
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .text-center {
+    text-align: center;
   }
 `;
