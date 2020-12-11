@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import AuthTemplate from '../templates/Auth';
 
@@ -11,8 +11,9 @@ import { paths } from '../configs/paths';
 const AuthRoutes: React.FC = () => (
   <AuthTemplate>
     <Switch>
-      <Route path={paths.SIGN_IN.url} exact component={SignIn} />
-      <Route path={paths.SIGN_UP.url}component={SignUp} />
+      <Route path={paths.SIGN_IN.url} component={SignIn} />
+      <Route path={paths.SIGN_UP.url} component={SignUp} />
+      <Redirect from={paths.DASHBOARD.url} to={paths.SIGN_IN.url} />
     </Switch>
   </AuthTemplate>
 );
