@@ -1,7 +1,7 @@
 const paths = {
   SIGN_IN: {
     title: 'Entrar',
-    url: '/entrar'
+    url: '/'
   },
   SIGN_UP: {
     title: 'Cadastre-se',
@@ -10,7 +10,7 @@ const paths = {
 
   DASHBOARD: {
     title: 'Dashboard',
-    url: '/'
+    url: '/painel'
   },
   NEW_REGISTER: {
     title: 'Novo registro',

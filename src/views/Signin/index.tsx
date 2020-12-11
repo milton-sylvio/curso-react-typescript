@@ -127,7 +127,7 @@ const SignIn: React.FC<IUserData> = () => {
       <p>
         Não tem cadastro? 
         <a 
-          href="/cadastre-se" 
+          href={paths.SIGN_UP.url}
           title="Clique aqui e cadastre-se"
         >
           Clique aqui

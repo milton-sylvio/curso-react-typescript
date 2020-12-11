@@ -18,7 +18,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     firebase.auth().onAuthStateChanged((user: any) => {
       setUser(user);
       setLoadingAuthState(false);
-  });
+    });
   }, []);
 
   return (
